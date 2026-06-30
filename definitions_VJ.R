@@ -14,3 +14,5 @@ eps <- 0.1
 
 lambda_off <- lambda_off_hat/eps^2
 mu0 <- mu0_hat/eps^2
+
+Tmax <- 7.5
