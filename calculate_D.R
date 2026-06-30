@@ -1,6 +1,6 @@
-# code to estimate diffusion coefficient D
+# code to estimate diffusion coefficient D based on parameter lambda
 source("definitions_VJ.R")
-library(MASS)   # for ginv()
+library(MASS)   
 
 K <- 2000               # number of discrete velocities
 
@@ -24,7 +24,6 @@ Tmat <- matrix(1/K, nrow = K, ncol = K)
 # L = -lambda I + lambda T
 Lmat <- -lambda_tumble * diag(K) + lambda_tumble * Tmat
 
-# COMPUTE THE PSEUDOINVERSE F
 Fmat <- ginv(Lmat)   # Moore–Penrose pseudoinverse
 
 Dmat <- matrix(0, 2, 2)

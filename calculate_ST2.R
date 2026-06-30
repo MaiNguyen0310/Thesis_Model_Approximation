@@ -1,4 +1,6 @@
-# estimate psi
+# code to estimate S_T^2
+# NOTE: this code is actually not necessary in the used simulations, 
+## as we have S_T^2=2. However, this method should work in general
 source("definitions_VJ.R")
 
 
@@ -14,7 +16,7 @@ v <- dirs * r
 
 
 
-#uniform turning kernel
+# uniform turning kernel
 Tmat <- matrix(1/M, nrow = M, ncol = M)
 
 Tvec <- rep(1/M, M)
