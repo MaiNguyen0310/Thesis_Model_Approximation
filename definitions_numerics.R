@@ -59,19 +59,6 @@ reflect_1d <- function(z, L) {
   z
 }
 
-# diffusion - used for transporters and motile hitchhikers
-# step_brownian_reflect <- function(pos, D, dt, L) {
-#   pos <- as.matrix(pos)
-#   if (nrow(pos) == 0){
-#     return(pos)
-#   }
-#   sigma <- sqrt(2 * D * dt)
-#   pos <- pos + matrix(rnorm(2 * nrow(pos), 0, sigma), ncol = 2)
-#   pos[,1] <- reflect_1d(pos[,1], L)
-#   pos[,2] <- reflect_1d(pos[,2], L)
-#   pos
-# }
-
 step_brownian_reflect <- function(pos, D, dt, L) {
   pos <- as.matrix(pos)
   if (nrow(pos) == 0) {
@@ -88,6 +75,17 @@ step_brownian_reflect <- function(pos, D, dt, L) {
   list(pos = pos_new, dX = dX)
 }
 
+step_brownian_reflect_track <- function(pos, D, dt, L) {
+  pos <- as.matrix(pos)
+  sigma <- sqrt(2 * D * dt)
+  dX <- matrix(rnorm(2 * nrow(pos), 0, sigma), ncol = 2)
+  
+  pos_new <- pos + dX
+  pos_new[,1] <- reflect_1d(pos_new[,1], L)
+  pos_new[,2] <- reflect_1d(pos_new[,2], L)
+  
+  list(pos = pos_new, dX = dX)
+}
 
 # discretesize density
 bin_to_grid <- function(pos, Nx, Ny, dx, dy){
@@ -226,16 +224,6 @@ random_direction <- function() {
   c(cos(theta), sin(theta))
 }
 
-# smooth2d <- function(M){
-#   K <- matrix(1,3,3)/9
-#   out <- M
-#   for(i in 2:(nrow(M)-1)){
-#     for(j in 2:(ncol(M)-1)){
-#       out[i,j] <- sum(M[(i-1):(i+1),(j-1):(j+1)] * K)
-#     }
-#   }
-#   out
-# }
 smooth2d <- function(M){
   K <- matrix(1,3,3)/9
   out <- M

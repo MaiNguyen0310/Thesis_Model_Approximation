@@ -85,16 +85,6 @@ exp_u_uniform <- function(N_h){
     ## SIMULATION STEP
     
     motile <- which(state_h == 1)
-    # if(length(motile) > 0){
-    #   pos_h[motile,] <- step_brownian_reflect(pos_h[motile,], D_phys, dt_sim, L)
-    #   # treat reflective boundaries as periodic unwrap
-    #   dx <- unwrap_increment(pos_h[motile,1], pos_prev[motile,1], L)
-    #   dy <- unwrap_increment(pos_h[motile,2], pos_prev[motile,2], L)
-    #   
-    #   pos_h_unwrapped[motile,1] <- pos_h_unwrapped[motile,1] + dx
-    #   pos_h_unwrapped[motile,2] <- pos_h_unwrapped[motile,2] + dy
-    # }
-    motile <- which(state_h == 1)
     if(length(motile) > 0){
       step_res <- step_brownian_reflect_track(pos_h[motile,], D_phys, dt_sim, L)
       
