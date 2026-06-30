@@ -1,5 +1,7 @@
+# general script with function definitions used in the hybrid simulation 
+# of the Markovian Hithchikers' Model
+
 # grid definition and numeric functions
-# grid
 L <- 10                # domain size [0,L] x [0,L]
 Nx_grid <- 150
 Ny_grid <- 150

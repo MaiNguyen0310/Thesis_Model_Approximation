@@ -1,3 +1,5 @@
+# general script with parameter definitions used in the hybrid simulation 
+# of the Markovian Hithchikers' Model
 set.seed(1234)
 N_t <- 50000
 
