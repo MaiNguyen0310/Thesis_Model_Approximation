@@ -1,3 +1,5 @@
+source("calculate_D.R")
+source("definitions_VJ.R")
 source("definitions_numerics.R")
 set.seed(123)
 pos_t <- cbind(

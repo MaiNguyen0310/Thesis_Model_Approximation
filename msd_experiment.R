@@ -1,3 +1,4 @@
+# same code as for the hybrid experiment, however, just to obtain MSD data
 library(deSolve)
 source("calculate_D.R")
 source("definitions_numerics.R")
@@ -11,7 +12,7 @@ run_msd_experiment <- function(N_h, dt_sim = 0.001) {
   run_id <- paste0("MSD_Nh", N_h, "_")
   dir.create(run_id, showWarnings = FALSE, recursive = TRUE)
   
-  # --- parameters ---
+  
   L <- 10
   lambda_off <- lambda_off_hat
   mu0 <- mu0_hat
@@ -33,8 +34,7 @@ run_msd_experiment <- function(N_h, dt_sim = 0.001) {
     rate_on = rate_on
   )
   saveRDS(params, file = file.path(run_id, "params.rds"))
-  
-  # --- initial conditions ---
+
   # hitchhikers start near the center
   pos_h <- cbind(
     rnorm(N_h, L/2, 1/2),

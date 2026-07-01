@@ -1,5 +1,8 @@
- source("calculate_D.R")
- source("calculate_ST2.R")
+# code to numerically solve the moments system for the Markovian Hitchhikers model
+# with homogeneous carrier population.
+# solutions for the MSD are plotted
+source("calculate_D.R")
+source("calculate_ST2.R")
 source("estimate_u0.R")
 
 library(ggplot2)
@@ -113,9 +116,6 @@ p
 
 alpha_est <- L^2 * (out[,"dDsi2"] + out[,"dDsm2"])/ (N0*4*D_phys)
 
-
-# plot(out[,"time"], alpha_est, type = 'l', lwd =2)
-# abline(h=alpha_the)
 
 alpha_the <- (mu_c)/(nu + mu_c)
 p2 <- ggplot(df, aes(x = time, y = alpha_est)) +

@@ -1,3 +1,4 @@
+# plot errors over time for the hybrid simulation of the Markovian Hitchhikers' Model
 library(ggplot2)
 library(paletteer)
 
